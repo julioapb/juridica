@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
-import mysql.connector
-import bcrypt
+from flask import Flask, render_template, request, redirect, url_for, session, flash # type: ignore
+import mysql.connector # type: ignore
+import bcrypt # type: ignore
 
 app = Flask(__name__)
 app.secret_key = 'tu_clave_secreta_aqui'
