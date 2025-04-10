@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Empleados{% endblock %}
+
+{% block content %}
+<div class="container-fluid text-center">
+    <h1 class="mb-4">NUEVO EMPLEADO</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="text-start" method="POST" action="{{ url_for('empleados.guardarEmpleado') }}">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo" name="correo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cargo" class="form-label">Cargo</label>
+                    <select class="form-select" name="cargo" id="cargo" required>
+                        <option value="" selected disabled>Selecciona un cargo</option>
+                        {% for cargo in cargos %}
+                            <option value="{{ cargo[0] }}">{{ cargo[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="cargo" class="form-label">Departamento</label>
+                    <select class="form-select" name="departamento" id="departamento" required>
+                        <option value="" selected disabled>Selecciona un departamento</option>
+                        {% for departamento in departamentos %}
+                            <option value="{{ departamento[0] }}">{{ departamento[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Empleado</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

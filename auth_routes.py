@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, Blueprint, g # type: ignore
-import mysql.connector # type: ignore
-from mysql.connector import Error # type: ignore
-import bcrypt # type: ignore
-
+import mysql.connector 
+from mysql.connector import Error 
+import bcrypt 
 # Crear un Blueprint para las rutas de autenticación
 auth_bp = Blueprint('auth', __name__)
 
