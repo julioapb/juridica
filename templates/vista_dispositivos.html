@@ -6,35 +6,92 @@
 <div class="container-fluid text-center">
     <h1 class="mb-4">NUEVO DISPOSITIVO</h1>
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form class="text-start" method="POST" action="{{ url_for('empleados.guardarEmpleado') }}">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+        <div class="col-md-8">
+            <form class="text-start" method="POST" action="{{ url_for('dispositivos.guardarDsipositivo') }}">
+                
+                <!-- Fila para los campos en dos columnas -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="tipo_dispositivo" class="form-label">Tipo Dispositivo</label>
+                        <select class="form-select" name="tipo_dispositivo" id="tipo_dispositivo" required>
+                            <option value="" selected disabled>Selecciona un tipo de dispositivo</option>
+                            {% for tipo_dispositivo in tipo_dispositivos %}
+                                <option value="{{ tipo_dispositivo[0] }}">{{ tipo_dispositivo[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="no_serie" class="form-label"># Serie</label>
+                        <input type="text" class="form-control" id="no_serie" name="no_serie" required>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="correo" class="form-label">Correo</label>
-                    <input type="email" class="form-control" id="correo" name="correo" required>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="marca" class="form-label">Marca</label>
+                        <input type="text" class="form-control" id="marca" name="marca" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="modelo" class="form-label">Modelo</label>
+                        <input type="text" class="form-control" id="modelo" name="modelo" required>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="cargo" class="form-label">Cargo</label>
-                    <select class="form-select" name="cargo" id="cargo" required>
-                        <option value="" selected disabled>Selecciona un cargo</option>
-                        {% for cargo in cargos %}
-                            <option value="{{ cargo[0] }}">{{ cargo[1] }}</option>
-                        {% endfor %}
-                    </select>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="color" class="form-label">Color</label>
+                        <input type="text" class="form-control" id="color" name="color" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="disco" class="form-label">Disco (GB)</label>
+                        <input type="number" class="form-control" id="disco" name="disco" required>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="cargo" class="form-label">Departamento</label>
-                    <select class="form-select" name="departamento" id="departamento" required>
-                        <option value="" selected disabled>Selecciona un departamento</option>
-                        {% for departamento in departamentos %}
-                            <option value="{{ departamento[0] }}">{{ departamento[1] }}</option>
-                        {% endfor %}
-                    </select>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="ram" class="form-label">RAM (GB)</label>
+                        <input type="number" class="form-control" id="ram" name="ram" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="procesador" class="form-label">Procesador</label>
+                        <input type="text" class="form-control" id="procesador" name="procesador" required>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Guardar Empleado</button>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="sistema_operativo" class="form-label">Sistema Operativo</label>
+                        <input type="text" class="form-control" id="sistema_operativo" name="sistema_operativo" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="fecha_ingreso" class="form-label">Fecha Ingreso</label>
+                        <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="estado_dispositivo" class="form-label">Estado Dispositivo</label>
+                        <select class="form-select" name="id_estado_dispositivo" id="id_estado_dispositivo" required>
+                            <option value="" selected disabled>Selecciona un estado</option>
+                            {% for estado_dispositivo in estados_dispositivo %}
+                                <option value="{{ estado_dispositivo[0] }}">{{ estado_dispositivo[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="estado_asignacion" class="form-label">Estado Asignación</label>
+                        <select class="form-select" name="estado_asignacion" id="estado_asignacion" required>
+                            <option value="" selected disabled>Selecciona un estado</option>
+                            {% for estado_asignacion in estados_asignacion %}
+                                <option value="{{ estado_asignacion[0] }}">{{ estado_asignacion[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Guardar Dispositivo</button>
             </form>
         </div>
     </div>
